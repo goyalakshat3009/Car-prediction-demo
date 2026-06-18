@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Car Price Predictor</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static',filename='style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="background-car"></div>
+
+<div class="container">
+
+<div class="header">
+
+<h1>🚘 Car Price Predictor 💰</h1>
+
+<p>
+🤖 Machine Learning Powered Used Car Valuation
+</p>
+
+<h3>
+👨‍💻 Developed By Akshat Goyal ✨
+</h3>
+
+</div>
+
+<div class="stats">
+
+<div class="card">
+📈 89.91%
+<span>R² Score</span>
+</div>
+
+<div class="card">
+💵 ₹98K
+<span>MAE</span>
+</div>
+
+<div class="card">
+🧠 ML
+<span>Powered</span>
+</div>
+
+</div>
+
+<form action="/predict" method="POST">
+
+<select name="company" required>
+<option value="">🏢 Select Company</option>
+
+{% for company in companies %}
+<option value="{{company}}">
+{{company}}
+</option>
+{% endfor %}
+</select>
+
+<select name="name" required>
+<option value="">🚗 Select Car Model</option>
+
+{% for car in car_models %}
+<option value="{{car}}">
+{{car}}
+</option>
+{% endfor %}
+</select>
+
+<input
+type="number"
+name="year"
+placeholder="📅 Manufacturing Year"
+required>
+
+<input
+type="number"
+name="kms_driven"
+placeholder="⏱️ KM Driven"
+required>
+
+<select name="fuel_type" class="full" required>
+
+<option value="">
+⛽ Select Fuel Type
+</option>
+
+{% for fuel in fuel_types %}
+<option value="{{fuel}}">
+{{fuel}}
+</option>
+{% endfor %}
+
+</select>
+
+<button>
+🚀 Predict Price
+</button>
+
+</form>
+
+{% if prediction_text %}
+<div class="result">
+{{ prediction_text }}
+</div>
+{% endif %}
+
+<div class="features">
+
+<div class="feature">
+🔒 Secure
+</div>
+
+<div class="feature">
+⚡ Fast
+</div>
+
+<div class="feature">
+🎯 Accurate
+</div>
+
+<div class="feature">
+📱 Responsive
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
